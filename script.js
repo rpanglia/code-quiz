@@ -1,15 +1,63 @@
 // List all variables
 
+var wrapper = document.querySelector("#wrapper");
+var quizTimer = document.querySelector("#quizTimer");
+var questionList = document.querySelector("#questionList");
+var beginTime = document.querySelector("#beginTime"); //start quiz button
 
+var score = 0;
+var questionIndex = 0;
+var timeLeft = 80;
+var penalty = 10;
 
+//// Array for questions
+var quizQuestions = [
+    {
+        title: "Commonly used data types DO NOT include:",
+        options: ["alerts", "numbers", "strings", "booleans"],
+        answer: "alerts"
+    },
 
-// Array for questions
+    {
+        title: "Arrays in JavaScript can be used to store __________________.",
+        options: ["numbers and strings", "booleans", "other arrays", "all of the above"],
+        answer: "all of the above"
+    },
 
+    {
+        title: "String values must be enclosed within ___________ when being assigned to variables",
+        options: ["commas", "curly brackets", "quotes", "parenthesis"],
+        answer: "quotes"
+    },
+
+    {
+        title: "The condition in an if / else statement is enclosed within _________________.",
+        options: ["quotes", "curly brackets", "square brackets", "parentheses"],
+        answer: "parentheses"
+    },
+
+    {
+        title: "A very useful tool used for developing and debugging for printing content to the debugger is:",
+        options: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+        answer: "console.log"
+    },
+
+];
 
 // Show questions 
 
 
-// Reset values
+// Reset/clear values
+function resetVariables () {
+    startScore = 0;
+    questionIndex = 0;
+}
+
+// BEGIN QUIZ
+function beginQuiz () {
+
+}
+
 
 // Check for correct answer
 
@@ -21,3 +69,9 @@
 
 
 // add Event listeners at bottom
+
+submitButton.addEventListener("click", function() {
+    beginQuiz()
+    console.log("start")
+})
+
