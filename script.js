@@ -3,12 +3,12 @@
 var wrapper = document.querySelector("#wrapper");
 var quizTimer = document.querySelector("#quizTimer");
 var questionList = document.querySelector("#questionList");
-var beginTime = document.querySelector("#beginTime"); //start quiz button
-
+var beginTime = document.querySelector("#beginTime"); // start quiz button
 var score = 0;
 var questionIndex = 0;
 var timeLeft = 80;
 var penalty = 10;
+var createChoices = document.createElement("cc");
 
 //// Array for questions
 var quizQuestions = [
@@ -44,7 +44,37 @@ var quizQuestions = [
 
 ];
 
+var timePending = 0;
+
+//Timer ----Reverse timer starts on the click of start quiz
+var time = document.getElementById("timer");
+
+timer.addEventListener("click", function() {
+    if (timePending === 0) {
+        timePending = setInterval(function () {
+            timeLeft--;
+            quizTimer.textContent = "Time Remainging: " + timePending;
+
+        if (timePending <= 0) {
+            clearPending(timePending);
+            allDone();
+            quizTimer.textContent = "Your Time's Up.";
+        }
+        },
+        )
+    }
+    show(questionIndex);
+}
+
+
+
+
+)
+
 // Show questions 
+
+
+
 
 
 // Reset/clear values
