@@ -22,7 +22,7 @@ body {
 }
 
 /* #begin {
-    /*title: The Coding Quiz*/
+    title: The Coding Quiz
 
 } */
 
@@ -42,7 +42,7 @@ body {
 
 #beginTime {
     padding: 20px 40px;
-    font-size: 20px;
+    font-size: 25px;
     color:bisque;
     background-color: purple;
     margin-left: 40%;
@@ -64,7 +64,12 @@ body {
 
 #clear {
     padding: 15px;
-    
+    position: relative;
+    color:bisque;
+    background-color: purple;
+    top: 40%;
+    right: 15%;
+    font-size: 25px;
 }
 
 
