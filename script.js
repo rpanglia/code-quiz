@@ -63,17 +63,36 @@ timer.addEventListener("click", function() {
         },
         )
     }
+
     show(questionIndex);
 }
+);
 
 
 
+// Show quiz questions 
+function show(questionIndex) {
+    questionList.innerHTML = "";
+    createChoices.innerHTML = "";
 
-)
+    //need to add a for loop because we are looping through all questions and choices that were listed above in array
+    for (var i = 0; i < quizQuestions.length; i++) {
 
-// Show questions 
+        var theQuestion = quizQuestions[questionIndex].title;
+        var theOptions = quizQuestions[questionIndex].options;
 
+        questionList.textContent = theQuestion;
+    }
 
+    theOptions.forEach(function (newEl) {
+        var listOption = document.createElement("li");
+        listOption.textContent = newEl;
+        //new list of answer options
+        questionList.appendChild(createChoices);
+        createChoices.appendChild(listOption);
+        listOption.addEventListener("click", (compare));
+    })
+}
 
 
 
