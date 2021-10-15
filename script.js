@@ -169,19 +169,37 @@ function allDone() {
 
 
 ////// add Event listeners at bottom
-
+// must obtain user data (initials and their score) and keep in local storage
 makeSubmit.addEventListener("click", function () {
     var initials = createInput.value;
 
     if (initials === null) {
-        console.log("Invalid Entry.");
+        console.log("Invalid Entry");
     }
-}
+    else {
+        var finalScore = {
+            initials: initials,
+            score: secondsLeft
+        }
+        console.log(finalScore);
+        var everyScore = localStorage.getItem("everyScore");
+        if (everyScore === null) {
+            everyScore = [];
+        } else {
+            everyScore = JSON.parse(everyScore);
+        }
+        everyScore.push(everyScore);
+        var theScore = JSON.stringify(everyScore);
+        localStorage.setItem("everyScore", theScore);
 
-)
+        // take user to end page
+        window.location.replace("./scores.html");
+    }
+});
 
-submitButton.addEventListener("click", function() {
-    beginQuiz()
-    console.log("start")
-})
+//is this one needed for first page?
+// submitButton.addEventListener("click", function() {
+//     beginQuiz()
+//     console.log("start")
+// })
 
