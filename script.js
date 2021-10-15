@@ -4,6 +4,7 @@ var wrapper = document.querySelector("#wrapper");
 var quizTimer = document.querySelector("#quizTimer");
 var questionList = document.querySelector("#questionList");
 var timer = document.querySelector("#beginTime"); // start quiz button
+
 var score = 0;
 var questionIndex = 0;
 var timeLeft = 80;
@@ -18,31 +19,31 @@ var quizQuestions = [
     {
         title: "Commonly used data types DO NOT include:",
         options: ["Alerts", "Numbers", "Strings", "Booleans"],
-        answer: "alerts"
+        answer: "Alerts"
     },
 
     {
         title: "Arrays in JavaScript can be used to store __________________.",
         options: ["Numbers and Strings", "Booleans", "Other Arrays", "All of the above"],
-        answer: "all of the above"
+        answer: "All of the above"
     },
 
     {
         title: "String values must be enclosed within ___________ when being assigned to variables",
         options: ["Commas", "Curly Brackets", "Quotes", "Parenthesis"],
-        answer: "quotes"
+        answer: "Quotes"
     },
 
     {
         title: "The condition in an if / else statement is enclosed within _________________.",
         options: ["Quotes", "Curly Brackets", "Square Brackets", "Parentheses"],
-        answer: "parentheses"
+        answer: "Parentheses"
     },
 
     {
         title: "A very useful tool used for developing and debugging for printing content to the debugger is:",
-        options: ["JavaScript", "Terminal / Bash", "for Loops", "console.log"],
-        answer: "console.log"
+        options: ["JavaScript", "Terminal / Bash", "for Loops", "console log"],
+        answer: "console log"
     },
 
 ];
@@ -119,7 +120,7 @@ function check(event) {
 
     if (questionIndex >= quizQuestions.length) {
         allDone();
-        makeDiv.textContent = "You've reached the end of this quiz! " + "Your score is: " + score + " out of " + quizQuestions.length;
+        makeDiv.textContent = "Your answered " + score + " out of " + quizQuestions.length + " questions correctly.";
     } 
     
     else {
@@ -142,7 +143,7 @@ function allDone() {
     // Concluding line
     var endLine = document.createElement("line");
     endLine.setAttribute("id", "endLine");
-    endLine.textContent = "That's All For Now!";
+    endLine.textContent = "You've reached the end of this quiz!";
     questionList.appendChild(endLine);
 
     var makePBlock = document.createElement("p");
@@ -154,7 +155,7 @@ function allDone() {
         var secondsLeft = timeLeft;
         var makePBlock = document.createElement("p");
         clearInterval(timePending);
-        makePBlock.textContent = "Good Effort. Your final score is: " + secondsLeft;
+        makePBlock.textContent = "Your final score is: " + secondsLeft;
         questionList.appendChild(makePBlock);
     }
 

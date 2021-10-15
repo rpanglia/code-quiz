@@ -40,7 +40,7 @@ body {
 #questionList{
     margin: 25px;
     padding: 15px;
-    
+    position: center;
 }
 
 #instructions {
@@ -88,18 +88,9 @@ body {
     text-align: center;
 }
 
-
-#scoresList {
-    padding: 20px;
-    background-color: thistle;
-    text-align:left;
-
-}
-
 #viewScores {
     padding: 30px;
     top: 20%;
-    
 }
 
 /*below submit is tied to script.js where user types their initials and hits submit at end of quiz*/
@@ -136,11 +127,6 @@ textarea {
     margin: 25px;
     width: 85%;
 }
-
-/* h1 {
-
-    text-align: center;
-} */
 
 h2 {
     text-align: center;
