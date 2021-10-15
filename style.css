@@ -1,0 +1,64 @@
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+/*index.html*/
+body {
+    background-color: thistle;
+}
+
+#quizSection {
+    margin: 25px;
+}
+
+#wrapper {
+    border: 2px dotted darkmagenta;
+    position: absolute;
+    width: 700px;
+    height: 700px;
+    /*left: 30%; top: 20%*/
+}
+
+#begin {
+    /*title: The Coding Quiz*/
+
+}
+
+#quizTimer {
+
+}
+
+#questionList{}
+
+#instructions {}
+
+#optionList {}
+
+#beginTime {}
+
+/*scores.html*/
+#backButton {}
+
+#clear {}
+
+
+
+
+
+/*add media queries to end*/
+/*media query for smaller desktop screens and smaller*/
+@media screen and (max-width: 980px) {
+
+}
+
+/*Media query for tablets and smaller*/
+@media screen and (max-width: 980px) {
+    
+}
+
+/*Media query for mobile phones and smaller*/
+@media screen and (max-width: 575px) {
+
+}
