@@ -7,54 +7,54 @@ var timer = document.querySelector("#beginTime"); // start quiz button
 var score = 0;
 var questionIndex = 0;
 var timeLeft = 80;
+var timePending = 0;
 var penalty = 10;
 var createChoices = document.createElement("cc"); //creating new elements
-var allDone = document.getElementById("allDone");
+
+
 
 //// Array for questions
 var quizQuestions = [
     {
         title: "Commonly used data types DO NOT include:",
-        options: ["alerts", "numbers", "strings", "booleans"],
+        options: ["Alerts", "Numbers", "Strings", "Booleans"],
         answer: "alerts"
     },
 
     {
         title: "Arrays in JavaScript can be used to store __________________.",
-        options: ["numbers and strings", "booleans", "other arrays", "all of the above"],
+        options: ["Numbers and Strings", "Booleans", "Other Arrays", "All of the above"],
         answer: "all of the above"
     },
 
     {
         title: "String values must be enclosed within ___________ when being assigned to variables",
-        options: ["commas", "curly brackets", "quotes", "parenthesis"],
+        options: ["Commas", "Curly Brackets", "Quotes", "Parenthesis"],
         answer: "quotes"
     },
 
     {
         title: "The condition in an if / else statement is enclosed within _________________.",
-        options: ["quotes", "curly brackets", "square brackets", "parentheses"],
+        options: ["Quotes", "Curly Brackets", "Square Brackets", "Parentheses"],
         answer: "parentheses"
     },
 
     {
         title: "A very useful tool used for developing and debugging for printing content to the debugger is:",
-        options: ["JavaScript", "terminal / bash", "for loops", "console.log"],
+        options: ["JavaScript", "Terminal / Bash", "for Loops", "console.log"],
         answer: "console.log"
     },
 
 ];
 
-//move bottom variables to top**************
-var timePending = 0;
-var time = document.getElementById("timer"); // whats this connected to??????????????
+
 
 //Timer ----Reverse timer starts on the click of start quiz
 timer.addEventListener("click", function() {
     if (timePending === 0) {
         timePending = setInterval(function () {
             timeLeft--;
-            quizTimer.textContent = "Time Remainging: " + timeLeft;
+            quizTimer.textContent = "Time Remaining: " + timeLeft;
 
             if (timeLeft <= 0) {
                 //is clearPending supposed to be clearInterval to clear everything out??
@@ -66,6 +66,7 @@ timer.addEventListener("click", function() {
     }
     show(questionIndex);
 }); 
+
 
 
 // Show quiz questions 
@@ -80,9 +81,9 @@ function show(questionIndex) {
         questionList.textContent = currentQuestion;
     }
 
-    currentOptions.forEach(function (newEl) {
+    currentOptions.forEach(function (newOption) {
         var listOption = document.createElement("li");
-        listOption.textContent = newEl;
+        listOption.textContent = newOption;
         //new list of answer options for each question
         questionList.appendChild(createChoices);
         createChoices.appendChild(listOption);
@@ -90,18 +91,12 @@ function show(questionIndex) {
     })
 }
 
-// // Reset/clear values
-// function resetVariables () {
-//     startScore = 0;
-//     questionIndex = 0;
-// }
-
 
 // Check for correct answer and pending questions
 function check(event) {
 
     var item = event.target;
-    if (item.valid("li")) {
+    if (item.matches("li")) {
 
         var makeDiv = document.createElement("div");
         makeDiv.setAttribute("id", "makeDiv");
@@ -123,7 +118,6 @@ function check(event) {
     questionIndex++;
 
     if (questionIndex >= quizQuestions.length) {
-
         allDone();
         makeDiv.textContent = "You've reached the end of this quiz! " + "Your score is: " + score + " out of " + quizQuestions.length;
     } 
@@ -134,6 +128,7 @@ function check(event) {
 
     questionList.appendChild(makeDiv);
 }
+
 
 
 
@@ -150,23 +145,23 @@ function allDone() {
     endLine.textContent = "That's All For Now!";
     questionList.appendChild(endLine);
 
-    var makePBlock = document.createElement("pBlock");
+    var makePBlock = document.createElement("p");
     makePBlock.setAttribute("id", "makePBlock");
     questionList.appendChild(makePBlock);
 
     // Determine time pending and present final score
     if (timeLeft >= 0) {
         var secondsLeft = timeLeft;
-        var makeLine = document.createElement("p");
+        var makePBlock = document.createElement("p");
         clearInterval(timePending);
-        makeLine.textContent = "Good Effort. Your final score is: " + secondsLeft;
-        questionList.appendChild(makeLine);
+        makePBlock.textContent = "Good Effort. Your final score is: " + secondsLeft;
+        questionList.appendChild(makePBlock);
     }
 
 
     var makeInputLabel = document.createElement("label");
     makeInputLabel.setAttribute("id", "makeInputLabel");
-    makeInputLabel.textContent = "Enter your initials here: ";
+    makeInputLabel.textContent = "Please enter your initials here: ";
     questionList.appendChild(makeInputLabel);
 
 
@@ -216,7 +211,7 @@ function allDone() {
 }
 
 
-
+// var time = document.getElementById("timer");
 
 ////// add Event listeners at bottom
 // must obtain user data (initials and their score) and keep in local storage
