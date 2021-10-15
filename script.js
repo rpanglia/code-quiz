@@ -103,10 +103,31 @@ function resetVariables () {
 }
 
 
-
-
 // Check for correct answer
+function check(event) {
+    var item = event.target
 
+    if (item.valid("li")) {
+
+        var makeDiv = document.createElement("div");
+        makeDiv.setAttribute("id", "makeDiv");
+
+        // if user's answer is correct..
+        if (item.textContent == quizQuestions[questionIndex].answer) {
+            score++;
+            makeDiv.textContent = "That's Correct!";
+        }
+
+        // if user's answer is INCORRECT, take off 10 seconds for each wrong answer AND provide the correct answer
+        else {
+            timeLeft = timeLeft - penalty;
+            makeDiv.textContent = "That's Incorrect. The correct answer is: " + quizQuestions[questionIndex].answer;  
+        }
+
+    }
+
+
+}
 
 
 
