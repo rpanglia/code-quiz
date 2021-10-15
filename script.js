@@ -9,6 +9,7 @@ var questionIndex = 0;
 var timeLeft = 80;
 var penalty = 10;
 var createChoices = document.createElement("cc");
+var timePending = 0;
 
 //// Array for questions
 var quizQuestions = [
@@ -44,11 +45,11 @@ var quizQuestions = [
 
 ];
 
+//move bottom variables to top**************
 var timePending = 0;
-
-//Timer ----Reverse timer starts on the click of start quiz
 var time = document.getElementById("timer");
 
+//Timer ----Reverse timer starts on the click of start quiz
 timer.addEventListener("click", function() {
     if (timePending === 0) {
         timePending = setInterval(function () {
@@ -87,13 +88,12 @@ function show(questionIndex) {
     theOptions.forEach(function (newEl) {
         var listOption = document.createElement("li");
         listOption.textContent = newEl;
-        //new list of answer options
+        //new list of answer options for each question
         questionList.appendChild(createChoices);
         createChoices.appendChild(listOption);
         listOption.addEventListener("click", (compare));
     })
 }
-
 
 
 // Reset/clear values
@@ -102,22 +102,28 @@ function resetVariables () {
     questionIndex = 0;
 }
 
-// BEGIN QUIZ
-function beginQuiz () {
 
-}
 
 
 // Check for correct answer
+
+
+
+
 
 
 //Link to scores.js to show high scores
 
 
 
+// End of Quiz
 
 
-// add Event listeners at bottom
+
+
+
+
+////// add Event listeners at bottom
 
 submitButton.addEventListener("click", function() {
     beginQuiz()
