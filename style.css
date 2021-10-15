@@ -33,10 +33,14 @@ body {
 
 #quizTimer {
     float: right;
+    padding: 15px;
+    font-weight: bold;
 }
 
 #questionList{
     margin: 25px;
+    padding: 15px;
+    
 }
 
 #instructions {
@@ -46,7 +50,9 @@ body {
     text-align: center;
 } 
 
-/* #optionList {} */
+#optionList {
+    padding: 20px;
+}
 
 #beginTime {
     padding: 20px 40px;
@@ -80,6 +86,20 @@ body {
     right: 15%;
     font-size: 20px;
     text-align: center;
+}
+
+
+#scoresList {
+    padding: 20px;
+    background-color: thistle;
+    text-align:left;
+
+}
+
+#viewScores {
+    padding: 30px;
+    top: 20%;
+    
 }
 
 /*below submit is tied to script.js where user types their initials and hits submit at end of quiz*/
