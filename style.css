@@ -150,18 +150,20 @@ li {
 }
 
 
-/*add media queries to end*/
-/*media query for smaller desktop screens and smaller*/
-@media screen and (max-width: 980px) {
+/*Media Queries Section is PENDING.*/
 
+/*FOR MOBILE PHONE*/
+/* [class*="col-"] {
+    text-align: center;
 }
 
-/*Media query for tablets and smaller*/
-@media screen and (max-width: 786px) {
-    
-}
+@media only screen and (min-width: 768px) {
+    #wrapper {
+        text-align: center;
+    }
 
-/*Media query for mobile phones and smaller*/
-@media screen and (max-width: 575px) {
+    #quizSection {
+        text-align: center;
+    }
 
-}
+}; */
