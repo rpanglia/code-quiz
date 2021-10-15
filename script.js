@@ -103,7 +103,7 @@ function resetVariables () {
 }
 
 
-// Check for correct answer
+// Check for correct answer and pending questions
 function check(event) {
     var item = event.target
 
@@ -126,9 +126,33 @@ function check(event) {
 
     }
 
+    // how to know # of questions remaining in quiz 
+    questionIndex++;
+    if (questionIndex >= quizQuestions.length) {
 
+        allDone();
+        makeDiv.textContent = "You've reached the end of this quiz! " + "Your score is: " + score + " out of " + quizQuestions.length + " correct.";
+    } 
+    
+    else {
+        show(questionIndex);
+    }
+
+    questionList.appendChild(makeDiv);
 }
 
+
+
+//if user comes to end of quiz and no questions remain, start allDone func
+
+function allDone() {
+
+    questionList.innerHTML = "";
+    quizTimer.innerHTML = "";
+
+    
+
+}
 
 
 
@@ -145,6 +169,16 @@ function check(event) {
 
 
 ////// add Event listeners at bottom
+
+makeSubmit.addEventListener("click", function () {
+    var initials = createInput.value;
+
+    if (initials === null) {
+        console.log("Invalid Entry.");
+    }
+}
+
+)
 
 submitButton.addEventListener("click", function() {
     beginQuiz()
