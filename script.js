@@ -152,6 +152,22 @@ function allDone() {
     quizTimer.innerHTML = "";
 
     
+
+
+
+    // user inputs initials at end of quiz and hit submit
+    var makeInput = document.createElement("input");
+    makeInput.setAttribute("type", "text");
+    makeInput.setAttribute("id", "initials");
+    makeInput.textContent = "";
+    questionList.appendChild(makeInput);
+
+    //typing submit response to the question div
+    var makeSubmit = document.createElement("button");
+    makeSubmit.setAttribute("type", "submit");
+    makeSubmit.setAttribute("id", "submit");
+    makeSubmit.textContent = "Submit";
+    questionList.appendChild(makeSubmit);
     
 
 }
