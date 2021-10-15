@@ -3,13 +3,14 @@
 var wrapper = document.querySelector("#wrapper");
 var quizTimer = document.querySelector("#quizTimer");
 var questionList = document.querySelector("#questionList");
-var beginTime = document.querySelector("#beginTime"); // start quiz button
+var timer = document.querySelector("#beginTime"); // start quiz button
 var score = 0;
 var questionIndex = 0;
 var timeLeft = 80;
 var penalty = 10;
 var createChoices = document.createElement("cc");
 var timePending = 0;
+var allDone = document.getElementById("allDone");
 
 //// Array for questions
 var quizQuestions = [
@@ -151,17 +152,11 @@ function allDone() {
     quizTimer.innerHTML = "";
 
     
+    
 
 }
 
 
-
-
-//Link to scores.js to show high scores
-
-
-
-// End of Quiz
 
 
 
@@ -170,6 +165,8 @@ function allDone() {
 
 ////// add Event listeners at bottom
 // must obtain user data (initials and their score) and keep in local storage
+//Link to scores.js to show high scores
+
 makeSubmit.addEventListener("click", function () {
     var initials = createInput.value;
 
@@ -203,3 +200,4 @@ makeSubmit.addEventListener("click", function () {
 //     console.log("start")
 // })
 
+// End of Code Quiz
