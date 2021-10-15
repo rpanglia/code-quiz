@@ -1,14 +1,34 @@
-// List Variables
+// List variables
 
-var highScore = document.querySelector("#highScore");
-var reset = document.querySelector("#reset");
+var scoresList = document.querySelector("#scoresList");
+var clear = document.querySelector("#clear");
 var backButton = document.querySelector("#backButton");
 
 
-// Get local storage values (some properties in script.js)
+// Add event listeners to end and reset containers
+clear.addEventListener("click", function () {
+    localStorage.clear();
+    location.reload();
+});
+
+
+// Get localStorage values for the scores (properties in script.js)
+var everyScore = localStorage.getItem("everyScore");
+everyScore = JSON.parse(everyScore);
+
+if (everyScore !== null) {
+
+    for (var i = 0; i < everyScore.length; i++) {
+        var makeLi = document.createElement("mi");
+        makeLi.textContent = everyScore[i].initials + " " + everyScore[i].score;
+        scoresList.appendChild(makeLi);
+    }
+}
 
 
 
-
-
-// Add event listeners to end
+backButton.addEventListener("click", function() {
+    window.location.replace("./index.html");  
+    //window.location.replace replaces the current history item so you can't go back to it.
+}
+);

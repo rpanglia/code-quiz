@@ -8,8 +8,7 @@ var score = 0;
 var questionIndex = 0;
 var timeLeft = 80;
 var penalty = 10;
-var createChoices = document.createElement("cc");
-var timePending = 0;
+var createChoices = document.createElement("cc"); //creating new elements
 var allDone = document.getElementById("allDone");
 
 //// Array for questions
@@ -48,29 +47,25 @@ var quizQuestions = [
 
 //move bottom variables to top**************
 var timePending = 0;
-var time = document.getElementById("timer");
+var time = document.getElementById("timer"); // whats this connected to??????????????
 
 //Timer ----Reverse timer starts on the click of start quiz
 timer.addEventListener("click", function() {
     if (timePending === 0) {
         timePending = setInterval(function () {
             timeLeft--;
-            quizTimer.textContent = "Time Remainging: " + timePending;
+            quizTimer.textContent = "Time Remainging: " + timeLeft;
 
-        if (timePending <= 0) {
-            //is clearPending supposed to be clearInterval to clear everything out??
-            clearPending(timePending);
-            allDone();
-            quizTimer.textContent = "Your Time's Up.";
-        }
-        },
-        )
+            if (timeLeft <= 0) {
+                //is clearPending supposed to be clearInterval to clear everything out??
+                clearInterval(timePending);
+                allDone();
+                quizTimer.textContent = "Your Time's Up.";
+            }
+        }, 1000);
     }
-
     show(questionIndex);
-}
-);
-
+}); 
 
 
 // Show quiz questions 
@@ -80,35 +75,32 @@ function show(questionIndex) {
 
     //need to add a for loop because we are looping through all questions and choices that were listed above in array
     for (var i = 0; i < quizQuestions.length; i++) {
-
-        var theQuestion = quizQuestions[questionIndex].title;
-        var theOptions = quizQuestions[questionIndex].options;
-
-        questionList.textContent = theQuestion;
+        var currentQuestion = quizQuestions[questionIndex].title;
+        var currentOptions = quizQuestions[questionIndex].options;
+        questionList.textContent = currentQuestion;
     }
 
-    theOptions.forEach(function (newEl) {
+    currentOptions.forEach(function (newEl) {
         var listOption = document.createElement("li");
         listOption.textContent = newEl;
         //new list of answer options for each question
         questionList.appendChild(createChoices);
         createChoices.appendChild(listOption);
-        listOption.addEventListener("click", (compare));
+        listOption.addEventListener("click", (check));
     })
 }
 
-
-// Reset/clear values
-function resetVariables () {
-    startScore = 0;
-    questionIndex = 0;
-}
+// // Reset/clear values
+// function resetVariables () {
+//     startScore = 0;
+//     questionIndex = 0;
+// }
 
 
 // Check for correct answer and pending questions
 function check(event) {
-    var item = event.target
 
+    var item = event.target;
     if (item.valid("li")) {
 
         var makeDiv = document.createElement("div");
@@ -123,17 +115,17 @@ function check(event) {
         // if user's answer is INCORRECT, take off 10 seconds for each wrong answer AND provide the correct answer
         else {
             timeLeft = timeLeft - penalty;
-            makeDiv.textContent = "That's Incorrect. The correct answer is: " + quizQuestions[questionIndex].answer;  
+            makeDiv.textContent = "That's Incorrect. The correct answer was: " + quizQuestions[questionIndex].answer;  
         }
-
     }
 
     // how to know # of questions remaining in quiz 
     questionIndex++;
+
     if (questionIndex >= quizQuestions.length) {
 
         allDone();
-        makeDiv.textContent = "You've reached the end of this quiz! " + "Your score is: " + score + " out of " + quizQuestions.length + " correct.";
+        makeDiv.textContent = "You've reached the end of this quiz! " + "Your score is: " + score + " out of " + quizQuestions.length;
     } 
     
     else {
@@ -152,6 +144,16 @@ function allDone() {
     questionList.innerHTML = "";
     quizTimer.innerHTML = "";
 
+    // Concluding line
+    var endLine = document.createElement("line");
+    endLine.setAttribute("id", "endLine");
+    endLine.textContent = "That's All For Now!";
+    questionList.appendChild(endLine);
+
+    var makePBlock = document.createElement("pBlock");
+    makePBlock.setAttribute("id", "makePBlock");
+    questionList.appendChild(makePBlock);
+
     // Determine time pending and present final score
     if (timeLeft >= 0) {
         var secondsLeft = timeLeft;
@@ -161,21 +163,11 @@ function allDone() {
         questionList.appendChild(makeLine);
     }
 
-    var makePBlock = document.createElement("pBlock");
-    makePBlock.setAttribute("id", "makePBlock");
-    questionList.setAttribute(makePBlock);
 
     var makeInputLabel = document.createElement("label");
     makeInputLabel.setAttribute("id", "makeInputLabel");
     makeInputLabel.textContent = "Enter your initials here: ";
     questionList.appendChild(makeInputLabel);
-
-
-    // Concluding line
-    var endLine = document.createElement("line");
-    endLine.setAttribute("id", "endLine");
-    endLine.textContent = "That's All For Now!";
-    questionList.appendChild(endLine);
 
 
     // user inputs initials at end of quiz and hit submit
@@ -188,10 +180,38 @@ function allDone() {
     //typing submit response to the question div
     var makeSubmit = document.createElement("button");
     makeSubmit.setAttribute("type", "submit");
-    makeSubmit.setAttribute("id", "submit");
+    makeSubmit.setAttribute("id", "Submit");
     makeSubmit.textContent = "Submit";
     questionList.appendChild(makeSubmit);
     
+
+
+    makeSubmit.addEventListener("click", function () {
+        var initials = makeInput.value;
+    
+        if (initials === null) {
+            console.log("Invalid Entry");
+        }
+        else {
+            var finalScore = {
+                initials: initials,
+                score: secondsLeft
+            }
+            console.log(finalScore);
+            var everyScore = localStorage.getItem("everyScore");
+            if (everyScore === null) {
+                everyScore = [];
+            } else {
+                everyScore = JSON.parse(everyScore);
+            }
+            everyScore.push(finalScore);
+            var theScore = JSON.stringify(everyScore);
+            localStorage.setItem("everyScore", theScore);
+    
+            // take user to end page
+            window.location.replace("./scores.html");
+        }
+    });
 
 }
 
@@ -201,33 +221,6 @@ function allDone() {
 ////// add Event listeners at bottom
 // must obtain user data (initials and their score) and keep in local storage
 //Link to scores.js to show high scores
-
-makeSubmit.addEventListener("click", function () {
-    var initials = createInput.value;
-
-    if (initials === null) {
-        console.log("Invalid Entry");
-    }
-    else {
-        var finalScore = {
-            initials: initials,
-            score: secondsLeft
-        }
-        console.log(finalScore);
-        var everyScore = localStorage.getItem("everyScore");
-        if (everyScore === null) {
-            everyScore = [];
-        } else {
-            everyScore = JSON.parse(everyScore);
-        }
-        everyScore.push(everyScore);
-        var theScore = JSON.stringify(everyScore);
-        localStorage.setItem("everyScore", theScore);
-
-        // take user to end page
-        window.location.replace("./scores.html");
-    }
-});
 
 //is this one needed for first page?
 // submitButton.addEventListener("click", function() {
