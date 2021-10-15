@@ -58,6 +58,7 @@ timer.addEventListener("click", function() {
             quizTimer.textContent = "Time Remainging: " + timePending;
 
         if (timePending <= 0) {
+            //is clearPending supposed to be clearInterval to clear everything out??
             clearPending(timePending);
             allDone();
             quizTimer.textContent = "Your Time's Up.";
@@ -151,8 +152,30 @@ function allDone() {
     questionList.innerHTML = "";
     quizTimer.innerHTML = "";
 
-    
+    // Determine time pending and present final score
+    if (timeLeft >= 0) {
+        var secondsLeft = timeLeft;
+        var makeLine = document.createElement("p");
+        clearInterval(timePending);
+        makeLine.textContent = "Good Effort. Your final score is: " + secondsLeft;
+        questionList.appendChild(makeLine);
+    }
 
+    var makePBlock = document.createElement("pBlock");
+    makePBlock.setAttribute("id", "makePBlock");
+    questionList.setAttribute(makePBlock);
+
+    var makeInputLabel = document.createElement("label");
+    makeInputLabel.setAttribute("id", "makeInputLabel");
+    makeInputLabel.textContent = "Enter your initials here: ";
+    questionList.appendChild(makeInputLabel);
+
+
+    // Concluding line
+    var endLine = document.createElement("line");
+    endLine.setAttribute("id", "endLine");
+    endLine.textContent = "That's All For Now!";
+    questionList.appendChild(endLine);
 
 
     // user inputs initials at end of quiz and hit submit
@@ -171,10 +194,6 @@ function allDone() {
     
 
 }
-
-
-
-
 
 
 
