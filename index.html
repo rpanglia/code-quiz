@@ -13,8 +13,35 @@
 
 
 <body>
+    <!--keep anchor tag at top, doesnt work within div "questionList"-->
+    <div>
+        <a href="scores.html">View High Scores</a>
+    </div>
+
+    <!-- div for title -->
+    <div id="quizSection">
+        <h1 id="begin">The Coding Quiz</h1>
+    </div>
+
+    <!-- wrapper containing timer and quiz questions -->
+    <div id="wrapper">
+        <div id="quizTimer"></div>
+        <div id="questionList">
+            <p id="instructions">Answer the following code-related questions within 80 seconds! Each incorrect answer will
+                penalize your pending score time by 10 seconds.</p>
+            <ul id="optionList"></ul>
+            <button id="beginTime">Start Quiz!</button>
+        </div>
+    </div>
     
-   <!-- create a header like nav-bar with live timer(far left side) and a link for highscore.html (far right side)(will be separate page FOR HIGH SCORE)
+    <script src="script.js"></script>
+</body>
+
+</html>
+
+
+
+ <!-- create a header like nav-bar with live timer(far left side) and a link for highscore.html (far right side)(will be separate page FOR HIGH SCORE)
     <header>
         <nav class="header">
 
@@ -28,32 +55,6 @@
         </nav>
     </header> -->
 
-
     <!-- Quiz body MAIN tag
     <main class="container justify-content-center"> -->
-
-    <!-- div for title -->
-        <div id="quizSection">
-            <h1 id="begin">The Coding Quiz</h1>
-        </div>
-
-        <!-- wrapper containing timer and quiz questions -->
-        <div id="wrapper">
-            <div id="quizTimer"></div>
-            <div id="questionList">
-                <p id="instructions">Answer the following code-related questions within 80 seconds! Each incorrect answer will penalize your pending score time by 10 seconds.</p>
-                <ul id="optionList"></ul>
-                <div>
-                    <a href="scores.html"></a>
-                    <button id="beginTime">Start Quiz</button>
-                </div>
-            </div>
-        </div>
-    
-    <!-- </main> -->
-
-    <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>-->
-    <script src="script.js"></script>
-</body>
-
-</html>
+        <!--<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>-->
