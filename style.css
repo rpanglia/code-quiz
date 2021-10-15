@@ -21,27 +21,51 @@ body {
     /*left: 30%; top: 20%*/
 }
 
-#begin {
+/* #begin {
     /*title: The Coding Quiz*/
 
-}
+} */
 
 #quizTimer {
-
+    float: right;
 }
 
-#questionList{}
+#questionList{
+    margin: 25px;
+}
 
-#instructions {}
+/* #instructions {
 
-#optionList {}
+} */
 
-#beginTime {}
+/* #optionList {} */
+
+#beginTime {
+    padding: 20px 40px;
+    font-size: 20px;
+    color:bisque;
+    background-color: purple;
+    margin-left: 40%;
+}
 
 /*scores.html*/
-#backButton {}
+#backButton {
+    padding: 15px;
+    width: auto;
+    position: relative; /*to box*/
+    background-color: purple;
+    top: 40%;
+    left: 50%;
+    text-align: center;
+    font-size: 25px;
+    text-decoration: none;
+    color:bisque;
+}
 
-#clear {}
+#clear {
+    padding: 15px;
+    
+}
 
 
 
