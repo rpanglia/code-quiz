@@ -212,16 +212,4 @@ function allDone() {
 }
 
 
-// var time = document.getElementById("timer");
-
-////// add Event listeners at bottom
-// must obtain user data (initials and their score) and keep in local storage
-//Link to scores.js to show high scores
-
-//is this one needed for first page?
-// submitButton.addEventListener("click", function() {
-//     beginQuiz()
-//     console.log("start")
-// })
-
 // End of Code Quiz
