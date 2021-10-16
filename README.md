@@ -3,7 +3,6 @@
 The purpose of this project was to create a time-based quiz with multiple choice questions the use is required to answer. This application is to run in the browser and features dynamically updated HTML and CSS, powered by JavaScript code. 
 
 
-
 ## User Story
 AS A coding boot camp student
 I WANT to take a timed quiz on JavaScript fundamentals that stores high scores
@@ -34,7 +33,8 @@ Please see below images taking you through an overview of this web application.
 ![preview5](/assets/app-preview-5.jpg)
 
 ## Links
-Deployed Link:
+Deployed Link: https://rpanglia.github.io/code-quiz/
 
-Code-Quiz Repo Link:
+Code-Quiz Repository Link: https://github.com/rpanglia/code-quiz
 
+## That's all for now. Happy Quizing!
